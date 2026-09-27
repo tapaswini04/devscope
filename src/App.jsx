@@ -14,10 +14,15 @@ function App() {
   async function searchGitHub(e) {
     e.preventDefault();
 
-    const name = username.trim();
+    // Accept either a username or a full GitHub profile URL
+    const input = username.trim();
+    const name = input
+      .replace(/^https?:\/\/(www\.)?github\.com\//i, "")
+      .replace(/\/+$/, "")
+      .split("/")[0];
 
     if (!name) {
-      setError("Please enter a GitHub username.");
+      setError("Please enter a GitHub username or profile URL.");
       return;
     }
 
@@ -144,10 +149,10 @@ function App() {
             <span className="search-icon">⌕</span>
             <input
               type="text"
-              placeholder="Enter a GitHub username..."
+              placeholder="Enter GitHub username or profile URL..."
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              aria-label="GitHub username"
+              aria-label="GitHub username or profile URL"
             />
             <button type="submit" disabled={loading}>
               {loading ? "Searching..." : "Analyze profile →"}
@@ -155,7 +160,8 @@ function App() {
           </form>
 
           <p className="search-hint">
-            Try it with a public GitHub username, such as octocat.
+            Try a GitHub username (octocat) or profile URL
+            (https://github.com/octocat).
           </p>
         </section>
 
