@@ -1,3 +1,21 @@
+# DevScope — GitHub Profile Analyzer
+
+🔗 **Live Demo:** https://devscope-ev1z.vercel.app/
+
+A GitHub profile analyzer built using React and the GitHub REST API.
+
+## Features
+- Search GitHub users
+- View profile information and statistics
+- Explore public repositories
+- Search and filter repositories
+
+## Tech Stack
+- React
+- Vite
+- CSS
+- GitHub REST API
+- Vercel (deployment)
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
